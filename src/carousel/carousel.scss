@@ -1,0 +1,31 @@
+.carousel-container{
+    width: 100vw;
+    height: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: $font-roboto;
+
+    .carousel-title{
+        font-size: 1.4em;
+        margin: 0;
+        color: $link-color;
+    }
+
+    .carousel-subtitle{
+        color: $hidden-gray;
+        margin: 0;
+    }
+
+    .carousel-cards-container{
+        height: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+}
+
+
+
+

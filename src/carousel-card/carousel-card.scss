@@ -1,0 +1,32 @@
+
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 14rem;
+    height: 18rem;
+    background-color: white;
+    box-sizing: border-box;
+    @include box-shadow($sm-shadow);
+    margin: 1rem;
+
+    .card-image{
+        max-width: 100%;
+    }
+    
+    .card-content{
+        padding: 1em;
+    }
+    
+    .card-title{
+        font-family: $font-roboto;
+        font-size: 1.25rem;
+        color: $link-color;
+    }
+
+    .card-subtitle{
+        font-family: $font-roboto;
+        font-size: 1rem;
+        color: $hidden-gray;
+        margin-top: 0.5rem;
+    }
+}
