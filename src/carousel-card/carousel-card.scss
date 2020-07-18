@@ -1,3 +1,6 @@
+carousel-card{
+    scroll-snap-align: start;
+}
 
 .card-wrapper{
     display: flex;
@@ -8,6 +11,7 @@
     box-sizing: border-box;
     @include box-shadow($sm-shadow);
     margin: 1rem;
+    
 
     .card-image{
         max-width: 100%;
