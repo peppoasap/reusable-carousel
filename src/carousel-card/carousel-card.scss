@@ -15,6 +15,7 @@ carousel-card{
 
     .card-image{
         max-width: 100%;
+        
     }
     
     .card-content{
@@ -32,5 +33,25 @@ carousel-card{
         font-size: 1rem;
         color: $hidden-gray;
         margin-top: 0.5rem;
+    }
+
+    .blank-image{
+        height: 40%;
+        background-color: $hidden-gray;
+        animation: $animation-pulse;
+    }
+
+    .blank-title{
+        width: 90%;
+        height: 1.25em;
+        background-color: $hidden-gray;
+        animation: $animation-pulse;
+    }
+
+    .blank-subtitle{
+        width: 50%;
+        height: 1em;
+        background-color: $hidden-gray;
+        animation: $animation-pulse;
     }
 }

@@ -9,6 +9,22 @@ $hidden-gray: rgb(180, 179, 179);
     box-shadow: $params;
 }
 
+@keyframes pulse {
+	0% {
+		opacity: 0.6;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0.6;
+	}
+}
+
+$animation-pulse: pulse 1s infinite;
+
 *{
     margin: 0;
     padding: 0;

@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -118,6 +129,23 @@ carousel-card {
   font-size: 1rem;
   color: #b4b3b3;
   margin-top: 0.5rem;
+}
+.card-wrapper .blank-image {
+  height: 40%;
+  background-color: #b4b3b3;
+  animation: pulse 1s infinite;
+}
+.card-wrapper .blank-title {
+  width: 90%;
+  height: 1.25em;
+  background-color: #b4b3b3;
+  animation: pulse 1s infinite;
+}
+.card-wrapper .blank-subtitle {
+  width: 50%;
+  height: 1em;
+  background-color: #b4b3b3;
+  animation: pulse 1s infinite;
 }
 
 /*# sourceMappingURL=styles.css.map */

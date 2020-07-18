@@ -1,15 +1,18 @@
+import { fakeApiUrl , fakeJsonLong, fakeJsonShort} from '../fakeApi.js';
+
 class Carousel extends HTMLElement{
     constructor(){
         super();
 
+        this.chunksArray = [];
         this.root = this.attachShadow({mode: 'open'});
+
         //Connect styles.css to component
         const linkStyle = document.createElement('link');
         linkStyle.rel='stylesheet';
         linkStyle.href='styles.css';
         this.root.appendChild(linkStyle);
         
-
         this.wrapper = document.createElement('div');
         this.wrapper.setAttribute('class', 'carousel-container');
         
@@ -45,11 +48,18 @@ class Carousel extends HTMLElement{
         this.carouselHeaderText.appendChild(subtitleElement);
     }
 
-    set carouselData(data){
-        data.forEach(cardData => {
-            const carouselCard = document.createElement('carousel-card');
-            carouselCard.data = cardData;
-            this.cardsContainer.appendChild(carouselCard);
+    preloadCards(chunkSize){
+        const chunk = [];
+        for(let i = 0; i < chunkSize; i++){
+            chunk.push(document.createElement('carousel-card'));
+        }
+        this.chunksArray.push(chunk);
+        this.renderLastChunks();
+    }
+
+    renderLastChunks(){
+        this.chunksArray[this.chunksArray.length - 1].forEach((card)=> {
+            this.cardsContainer.appendChild(card);
         });
     }
 
@@ -127,6 +137,28 @@ class Carousel extends HTMLElement{
               this.cardsContainerElement.scrollLeft = scrollLeft - step;
           });
     }
+
+    fetchCards(chunkSize){
+        this.getCardsData(chunkSize).then((data) => {
+            let i = 0;
+            this.chunksArray[this.chunksArray.length - 1].forEach((card)=> {
+                card.data = data.results[i];
+                i++;
+            });
+        });
+    }
+
+    // Fetch cards data from API, chunkSize indicate the number of cards to fetch. 
+    getCardsData(chunkSize){
+        return new Promise((resolve, reject) =>{
+            this.preloadCards(chunkSize);
+            const json = fakeJsonLong;
+            setTimeout(() => {
+                resolve(json);
+            }, 2000)
+        });
+    }
+
 }
 
 window.customElements.define('my-carousel', Carousel);
