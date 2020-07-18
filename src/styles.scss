@@ -1,0 +1,22 @@
+
+$font-roboto: 'Roboto';
+$sm-shadow: 0px 2px 4px 0px rgba(0,0,0,0.25);
+$link-color: rgb(44, 114, 172);
+$hidden-gray: rgb(180, 179, 179);
+@mixin box-shadow($params){
+    -webkit-box-shadow: $params;
+    -moz-box-shadow: $params;
+    box-shadow: $params;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #f6f6f6;
+}
+
+@import './carousel/carousel.scss', './carousel-card/carousel-card.scss';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons'); 
