@@ -12,8 +12,18 @@ carousel-card{
     @include box-shadow($sm-shadow);
     margin: 1rem;
     
+    .card-header{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-header-info{
+        display: flex;
+        justify-content: space-between
+    }
 
     .card-image{
+
         max-width: 100%;
         
     }
@@ -26,6 +36,7 @@ carousel-card{
         font-family: $font-roboto;
         font-size: 1.25rem;
         color: $link-color;
+        text-transform: capitalize;
     }
 
     .card-subtitle{
@@ -33,10 +44,46 @@ carousel-card{
         font-size: 1rem;
         color: $hidden-gray;
         margin-top: 0.5rem;
+        text-transform: capitalize;
+    }
+
+    .card-type{
+        max-width: 50%;
+        height: 1.5em;
+        background-color: rgba(0, 0, 0, 0.7);
+        margin-top: -1.5em;
+        padding: 0.25em;
+        box-sizing: border-box;
+        color: white;
+        font-family: $font-roboto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 4px 0 0;
+        text-transform: capitalize;
+    }
+    .card-duration{
+        max-width: 40%;
+        height: 1.5em;
+        background-color: rgba(0, 0, 0, 0.6);
+        margin-top: -1.5em;
+        padding: 0.25em;
+        box-sizing: border-box;
+        color: white;
+        font-family: $font-roboto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px 0 0 0;
+    }
+    
+
+    .blank-card-header{
+        height: 40%;
     }
 
     .blank-image{
-        height: 40%;
+        height: 100%;
         background-color: $hidden-gray;
         animation: $animation-pulse;
     }
