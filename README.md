@@ -21,5 +21,10 @@ This is a Carousel Component written in Javascript using WebComponents.
     // fetchCards(chunkSize) is a method to retrieve the carousel cards data from API
     carousel1.fetchCards(9);
 ```
+## How to run
+To run this example use a web server, like [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
 
 ### Screenshot
+![overview](https://github.com/peppoasap/reusable-carousel/blob/master/screenshot/overview.png)
+
+![loading](https://github.com/peppoasap/reusable-carousel/blob/master/screenshot/loading.png)
