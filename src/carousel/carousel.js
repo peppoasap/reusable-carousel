@@ -1,5 +1,5 @@
 import { fakeApiUrl, fakeJsonLong } from '../fakeApi.js';
-
+import '../carousel-card/carouselCard.js';
 // Defining the Carousel Component
 class Carousel extends HTMLElement {
     constructor() {

@@ -1,4 +1,4 @@
-import './carousel-card/carouselCard.js';
+
 import './carousel/carousel.js';
 
 window.addEventListener('load', () => {
