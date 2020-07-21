@@ -25,6 +25,7 @@ class CarouselCard extends HTMLElement {
         this.blankSubtitle();
     }
 
+    // All the 'blank' method create layout element of the cards to show loading animation
     blankImage() {
         this.image = document.createElement('img');
         this.image.setAttribute('class', 'card-image blank-image');

@@ -1,5 +1,6 @@
 import { fakeApiUrl, fakeJsonLong } from '../fakeApi.js';
 
+// Defining the Carousel Component
 class Carousel extends HTMLElement {
     constructor() {
         super();
@@ -13,6 +14,7 @@ class Carousel extends HTMLElement {
         linkStyle.href = 'styles.css';
         this.root.appendChild(linkStyle);
 
+        // Create some carousel elements to define structure of component
         this.wrapper = document.createElement('div');
         this.wrapper.setAttribute('class', 'carousel-container');
 
@@ -27,6 +29,7 @@ class Carousel extends HTMLElement {
 
     }
 
+    // Set the Icon of the carousel based on a Material Icons String
     set icon(icon) {
         const iconElement = document.createElement('span');
         iconElement.setAttribute('class', 'material-icons carousel-icon');
@@ -34,6 +37,7 @@ class Carousel extends HTMLElement {
         this.carouselHeader.appendChild(iconElement);
     }
 
+    // Set the title of the carousel
     set title(title) {
         const titleElement = document.createElement('h1');
         titleElement.setAttribute('class', 'carousel-title');
@@ -41,6 +45,7 @@ class Carousel extends HTMLElement {
         this.carouselHeaderText.appendChild(titleElement);
     }
 
+    // Set the subtitle/description of the carousel
     set subtitle(subtitle) {
         const subtitleElement = document.createElement('p');
         subtitleElement.setAttribute('class', 'carousel-subtitle');
@@ -48,6 +53,7 @@ class Carousel extends HTMLElement {
         this.carouselHeaderText.appendChild(subtitleElement);
     }
 
+    // Preload n empty cards based on chunkSize to show loading animation
     preloadCards(chunkSize) {
         const chunk = [];
         for (let i = 0; i < chunkSize; i++) {
@@ -57,12 +63,14 @@ class Carousel extends HTMLElement {
         this.renderLastChunks();
     }
 
+    // Append every cards to the CardsContainer based on chunks stored il chunksArray
     renderLastChunks() {
         this.chunksArray[this.chunksArray.length - 1].forEach((card) => {
             this.cardsContainer.appendChild(card);
         });
     }
 
+    // Call create method for Arrow Control and append to the container if not already appended
     showSideControls() {
         if (this.sideControls.length == 0) {
             this.cardsContainer.appendChild(this.createArrowControl('right'));
@@ -70,8 +78,11 @@ class Carousel extends HTMLElement {
         }
     }
 
+    // Create arrow based on a string value for the side
     createArrowControl(floatingSide) {
         const arrow = document.createElement('span');
+
+        // Define the behavior to scroll by a side
         const scrollToRight = () => {
             this.cardsContainerElement.scrollBy({ left: 100, behavior: 'smooth' });
         };
@@ -86,16 +97,20 @@ class Carousel extends HTMLElement {
         return arrow;
     }
 
+    // This method is for component life cycle, it is called when the carousel is attached to the Main HTML
     connectedCallback() {
         this.root.appendChild(this.wrapper);
         this.wrapper.appendChild(this.carouselHeader);
         this.carouselHeader.appendChild(this.carouselHeaderText);
         this.wrapper.appendChild(this.cardsContainer);
 
+        // Delay to check size of the carousel container and determine if side controls are needed
+        // Need this to avoid container size not correctly generated
         setTimeout(() => {
             this.checkIfSideControls();
         }, 10)
 
+        // on window resize check if side controls are needed
         window.addEventListener('resize', () => {
             this.checkIfSideControls();
         });
@@ -113,6 +128,7 @@ class Carousel extends HTMLElement {
         }
     }
 
+    // Enable the dragging of CardsContainer and set is behavior and speed
     enableTouchDragging() {
         //Enable dragging to scroll
         this.cardsContainerElement.classList.add('draggable');
@@ -154,6 +170,8 @@ class Carousel extends HTMLElement {
         const res = await fetch(fakeApiUrl + chunkSize);
         const json = await res.json();
         //const json = fakeJsonLong;
+
+        // Fake delay for loading
         setTimeout(() => {
             let i = 0;
             this.chunksArray[this.chunksArray.length - 1].forEach((card) => {
